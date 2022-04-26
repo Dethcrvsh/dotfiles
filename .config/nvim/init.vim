@@ -9,12 +9,60 @@ endif
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'higashi000/noa.nvim'
+Plug 'dylanaraps/wal.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'ellisonleao/glow.nvim', {'branch': 'main'}
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'vim-python/python-syntax'
+Plug 'preservim/nerdtree'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+colorscheme wal
+set number
+
+let g:python_highlight_all = 1
+
 " Set tab width "
 set tabstop=4
+
+" ===| LUA LINE | ==="
+lua << END
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+    globalstatus = false,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+END
 
 " ===| COC SETUP |=== "
 

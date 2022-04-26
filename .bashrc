@@ -18,4 +18,9 @@ wal -R -e -n > /dev/null 2>&1
 # Alias for handling version control of the dotfiles
 alias config='/usr/bin/git --git-dir=/home/dethcrvsh/dotfiles --work-tree=/home/dethcrvsh'
 
+eval "$(zoxide init bash)"
+
+# Alias for copying the current path to the clipboard
+alias pc='pwd | xclip -selection clipboard'
+
 neofetch
