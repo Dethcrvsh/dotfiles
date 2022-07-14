@@ -8,7 +8,7 @@
 alias ls='ls --color=auto'
 alias r='ranger'
 
-PS1='\W > '
+PS1='\e[36m\W > \e[37m'
 
 export EDITOR=nvim
 export PATH=~/.local/bin:"$PATH"
