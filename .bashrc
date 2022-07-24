@@ -14,7 +14,7 @@ export EDITOR=nvim
 export PATH=~/.local/bin:"$PATH"
 
 # Initialize the theme through pywal
-wal -R -e -n > /dev/null 2>&1
+(cat ~/.cache/wal/sequences &)
 
 # Alias for handling version control of the dotfiles
 alias config='/usr/bin/git --git-dir=/home/dethcrvsh/dotfiles --work-tree=/home/dethcrvsh'

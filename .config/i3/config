@@ -15,8 +15,11 @@ exec picom
 # Initialize the wallpaper
 exec --no-startup-id nitrogen --restore
 
+# Initialize the highlighted border around the windows
+exec /usr/bin/xborder/xborders --border-radius 10 --border-width 2
+
 #i3-gaps
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
 gaps inner 10
 gaps outer 0
 
