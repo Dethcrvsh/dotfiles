@@ -16,11 +16,11 @@ exec picom
 exec --no-startup-id nitrogen --restore
 
 # Initialize the highlighted border around the windows
-exec /usr/bin/xborder/xborders --border-radius 10 --border-width 2
+exec /usr/bin/xborder/xborders --border-radius 10 --border-width 3
 
 #i3-gaps
 for_window [class="^.*"] border pixel 0
-gaps inner 10
+gaps inner 20
 gaps outer 0
 
 set $mod Mod4

@@ -17,14 +17,15 @@
 ;==========================================================
 
 [colors]
-background = ${xrdb:color0:#222}
+background = ${xrdb:color0}
 ;background = #222
 background-alt = ${xrdb:color0:#222}
 foreground = ${xrdb:color6:#222}
 ;foreground = #dfdfdf
-foreground-alt = #555
+foreground-alt = ${xrdb:color3:#222}
 primary = ${xrdb:color2:#222}
 secondary = #ffffff
+underline = ${xrdb:color5:#222}
 alert = #bd2c40
 
 [bar/bar1]
@@ -52,12 +53,12 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = hack:pixelsize=10:weight=bold:antialias=true;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-1 = Iosevka:pixelsize=14;1
+font-2 = Weather Icons:size=12;1
 
 modules-left = bspwm i3
-modules-center = mpd
-modules-right = filesystem pulseaudio memory cpu eth temperature date 
+modules-center = spotify openweathermap 
+modules-right = updates-pacman-aurhelper filesystem memory cpu eth speed date 
 
 tray-position = right
 tray-padding = 2
@@ -78,54 +79,41 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 [bar/bar2]
+inherit = bar/bar1
 monitor = ${env:MONITOR:HDMI-0}
-width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
-;radius = 6.0
-fixed-center = false
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = #f00
-
-border-size = 0
-border-color = #00000000
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = hack:pixelsize=10:weight=bold:antialias=true;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-
-modules-left = bspwm i3
-modules-center = 
 modules-right = 
+modules-center = 
+modules-left = bspwm i3
 
-tray-position = right
-tray-padding = 2
-;tray-background = #0063ff
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates-pacman-aurhelper/updates-pacman-aurhelper.sh
+interval = 600
 
-;wm-restack = bspwm
-;wm-restack = i3
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${colors.underline} 
 
-;override-redirect = true
+[module/openweathermap]
+type = custom/script
+exec = ~/.config/polybar/scripts/openweathermap/openweathermap.sh
+interval = 600
 
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
+format-underline = ${colors.underline} 
+label-font = 3
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = "ﱘ "
+format-prefix-foreground = ${colors.foreground-alt}
+format = <label>
+exec = python .config/polybar/scripts/polybar-spotify/spotify_status.py -f '{artist}: {song}'
+format-underline = ${colors.underline}
+;control players (optional)
+click-left = playerctl --player=spotify play-pause 
+click-right = playerctl --player=spotify next 
+click-middle = playerctl --player=spotify previous 
 
 [module/xwindow]
 type = internal/xwindow
@@ -153,7 +141,10 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+format-mounted-underline = ${colors.underline}
+
+; I absolutely hate that variables cannot be evaluated inline
+label-mounted = %{F#3463CA}%{F-} %used% / %total% 
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -214,7 +205,7 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 ; Separator in between workspaces
-; label-separator = |
+label-separator = |
 
 
 [module/mpd]
@@ -255,17 +246,17 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+format-underline = ${colors.underline}
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-underline = ${colors.underline} 
 label = %percentage_used%%
 
 [module/wlan]
@@ -295,8 +286,8 @@ type = internal/network
 interface = enp5s0
 interval = 3.0
 
-format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-underline = ${colors.underline}
+format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -305,6 +296,13 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/speed]
+inherit = module/eth
+interval = 1.0
+
+format-connected-prefix = "ﰵ "
+label-connected = %upspeed% %{F#3463CA}ﰬ %{F-}%downspeed% 
 
 [module/date]
 type = internal/date
@@ -316,9 +314,9 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = ${colors.underline} 
 
 label = %date% %time%
 
@@ -326,7 +324,7 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+label-volume = VOL  %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted = 🔇 muted
