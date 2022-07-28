@@ -55,7 +55,7 @@ font-1 = Iosevka:pixelsize=14;1
 font-2 = Weather Icons:size=12;1
 
 modules-left = i3
-modules-center = spotify openweathermap 
+modules-center = spotify openweathermap polybar-liu-schedule
 modules-right = updates-pacman-aurhelper filesystem memory cpu eth speed date 
 
 tray-position = right
@@ -80,9 +80,14 @@ cursor-scroll = ns-resize
 [bar/bar2]
 inherit = bar/bar1
 monitor = ${env:MONITOR:HDMI-0}
-modules-right = 
+modules-right = date
 modules-center = 
 modules-left = i3
+
+[module/polybar-liu-schedule]
+type = custom/script
+exec = ~/Projects/polybar-liu-schedule/polybar-liu-schedule.sh
+interval = 900
 
 [module/updates-pacman-aurhelper]
 type = custom/script

@@ -5,6 +5,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Import the environment variables specified in
+# a separate file since they should not be source controlled
+source ~/.profile
+
 alias ls='ls --color=auto'
 alias r='ranger'
 
