@@ -75,6 +75,9 @@ bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
+# Lock the screen using i3lock
+bindsym $mod+Shift+p exec --no-startup-id i3lock -i ~/Images/Wallpapers/purple_lock.png
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down

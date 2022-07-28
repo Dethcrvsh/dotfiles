@@ -18,12 +18,10 @@
 
 [colors]
 background = ${xrdb:color0}
-;background = #222
-background-alt = ${xrdb:color0:#222}
-foreground = ${xrdb:color6:#222}
-;foreground = #dfdfdf
-foreground-alt = ${xrdb:color3:#222}
-primary = ${xrdb:color2:#222}
+background-alt = ${xrdb:color0}
+foreground = ${xrdb:color6}
+foreground-alt = ${xrdb:color3}
+primary = ${xrdb:color2}
 secondary = #ffffff
 underline = ${xrdb:color5:#222}
 alert = #bd2c40
@@ -35,7 +33,7 @@ height = 27
 ;offset-x = 1%
 ;offset-y = 1%
 ;radius = 6.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -56,12 +54,13 @@ font-0 = hack:pixelsize=10:weight=bold:antialias=true;1
 font-1 = Iosevka:pixelsize=14;1
 font-2 = Weather Icons:size=12;1
 
-modules-left = bspwm i3
+modules-left = i3
 modules-center = spotify openweathermap 
 modules-right = updates-pacman-aurhelper filesystem memory cpu eth speed date 
 
 tray-position = right
 tray-padding = 2
+
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
@@ -83,7 +82,7 @@ inherit = bar/bar1
 monitor = ${env:MONITOR:HDMI-0}
 modules-right = 
 modules-center = 
-modules-left = bspwm i3
+modules-left = i3
 
 [module/updates-pacman-aurhelper]
 type = custom/script
@@ -186,7 +185,7 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-underline= ${colors.underline}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor

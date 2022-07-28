@@ -8,6 +8,9 @@
 alias ls='ls --color=auto'
 alias r='ranger'
 
+# I can never remember the name for this program
+alias screenshot='scrot'
+
 PS1='\e[36m\W > \e[37m'
 
 export EDITOR=nvim
