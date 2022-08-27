@@ -26,7 +26,7 @@ alias pc='pwd | xclip -selection clipboard'
 # Alias for putting a file in the trash using trash-cli
 alias rm='trash-put'
 
-xrandr --output DP-0 --left-of HDMI-0
+alias vim='nvim'
 
 export EDITOR=nvim
 export PATH=~/.local/bin:"$PATH"
