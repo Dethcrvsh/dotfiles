@@ -33,7 +33,7 @@ height = 27
 ;offset-x = 1%
 ;offset-y = 1%
 ;radius = 6.0
-fixed-center = true
+fixed-center = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -84,10 +84,21 @@ modules-right = date
 modules-center = 
 modules-left = i3
 
+[bar/bar3]
+inherit = bar/bar1
+monitor = ${env:MONITOR:HDMI-1}
+modules-right = date
+modules-center = 
+modules-left = i3
+
 [module/polybar-liu-schedule]
 type = custom/script
 exec = ~/Projects/polybar-liu-schedule/polybar-liu-schedule.sh
 interval = 900
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${colors.underline}
 
 [module/updates-pacman-aurhelper]
 type = custom/script
@@ -306,6 +317,7 @@ inherit = module/eth
 interval = 1.0
 
 format-connected-prefix = "ﰵ "
+width = 1000pt
 label-connected = %upspeed% %{F#3463CA}ﰬ %{F-}%downspeed% 
 
 [module/date]
