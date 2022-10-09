@@ -28,6 +28,8 @@ alias rm='trash-put'
 
 alias vim='nvim'
 
+alias server='ssh -p 5980 server@192.168.0.104'
+
 export EDITOR=nvim
 export PATH=~/.local/bin:"$PATH"
 
@@ -38,3 +40,6 @@ eval "$(zoxide init bash)"
 
 neofetch
 
+alias sync="rsync -auzP -e 'ssh -p 5980' --exclude 'venv' ~/Courses/ server@192.168.0.104:~/rsync/courses/ && rsync -auzP -e 'ssh -p 5980' server@192.168.0.104:~/rsync/courses/ ~/Courses/"
+
+alias ls='exa'
