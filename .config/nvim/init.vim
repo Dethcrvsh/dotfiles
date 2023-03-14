@@ -20,6 +20,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'vim-python/python-syntax'
 Plug 'preservim/nerdtree'
+Plug 'lervag/vimtex'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -29,7 +30,34 @@ set number
 let g:python_highlight_all = 1
 
 " Set tab width "
+set expandtab
 set tabstop=4
+set shiftwidth=4
+
+nmap <C-n> :NERDTreeToggle<CR>
+
+" ----------------------------------------------------------------------------
+" move to the window in the direction shown, or create a new split in that
+" direction
+" ----------------------------------------------------------------------------
+func! WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfu
+ 
+nnoremap <silent> <C-h> :call WinMove('h')<cr>
+nnoremap <silent> <C-j> :call WinMove('j')<cr>
+nnoremap <silent> <C-k> :call WinMove('k')<cr>
+nnoremap <silent> <C-l> :call WinMove('l')<cr>
+" ----------------------------------------------------------------------------
 
 " ===| LUA LINE | ==="
 lua << END
@@ -234,3 +262,21 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" ===| VIMTEX |=== "
+" This is necessary for VimTeX to load properly. The "indent" is optional.
+" Note that most plugin managers will do this automatically.
+filetype plugin indent on
+
+" This enables Vim's and neovim's syntax-related features. Without this, some
+" VimTeX features will not work (see ":help vimtex-requirements" for more
+" info).
+syntax enable
+
+" Viewer options: One may configure the viewer either by specifying a built-in
+" viewer method:
+let g:vimtex_view_method = 'zathura'
+
+" Most VimTeX mappings rely on localleader and this can be changed with the
+" following line. The default is usually fine and is the symbol "\".
+let maplocalleader = ","

@@ -60,7 +60,7 @@ UNITS="metric"
 SYMBOL="°"
 # Real hacky way of accounting for the time zone
 # TODO: Fix this
-TIME_DISP=7200
+TIME_DISP=3600
 
 API="https://api.openweathermap.org/data/2.5"
 
@@ -107,13 +107,13 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
     now=$(date +%s)
 
     if [ "$sun_rise" -gt "$now" ]; then
-        daytime="%{T3}%{F#3463CA} %{F-}%{T1}$(get_duration "$((sun_rise))")%{T-}"
+        daytime="%{T3}%{F#89DDFF} %{F-}%{T1}$(get_duration "$((sun_rise))")%{T-}"
     elif [ "$sun_set" -gt "$now" ]; then
-        daytime="%{T3}%{F#3463CA} %{F-}%{T1}$(get_duration "$((sun_set))")%{T-}"
+        daytime="%{T3}%{F#89DDFF} %{F-}%{T1}$(get_duration "$((sun_set))")%{T-}"
     else
-        daytime="%{T3}%{F#3463CA} %{F-}%{T1}$(get_duration "$((sun_rise))")%{T-}"
+        daytime="%{T3}%{F#89DDFF} %{F-}%{T1}$(get_duration "$((sun_rise))")%{T-}"
     fi
 
-    echo "%{F#3463CA}$(get_icon "$current_icon") %{F-}%{T1}$current_temp$SYMBOL%{T-} %{F#3463CA}%{T3}$trend  $(get_icon "$forecast_icon")%{F-}%{T-} $forecast_temp$SYMBOL  $daytime"
+    echo "%{F#89DDFF}$(get_icon "$current_icon") %{F-}%{T1}$current_temp$SYMBOL%{T-} %{F#89DDFF}%{T3}$trend  $(get_icon "$forecast_icon")%{F-}%{T-} $forecast_temp$SYMBOL  $daytime"
 fi
 

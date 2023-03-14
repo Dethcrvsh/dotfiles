@@ -10,23 +10,24 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Start the compositor
-exec picom
+exec_always --no-startup-id picom
 
 # Initialize the wallpaper
 exec --no-startup-id nitrogen --restore
 
 # Initialize the highlighted border around the windows
-exec /usr/bin/xborder/xborders --border-radius 10 --border-width 3
+exec_always --no-startup-id /usr/bin/xborder/xborders -c ~/.config/i3/xborders_config.json
 
 #i3-gaps
-for_window [class="^.*"] border pixel 0
-gaps inner 20
-gaps outer 0
+for_window [class="^.*"] border pixel 2
+gaps inner 30
+gaps outer 15
 
 set $mod Mod4
 
 # class                         border          background      text            indicator       child_border
-client.focused                  #3f65d0         #3f65d0         #000000         #3f65d0         #3f65d0
+client.focused                  #CD7A8F         #CD7A8F         #000000         #CD7A8F         #CD7A8F
+#client.focused                  #CD7A8F         #3f65d0         #000000         #3f65d0         #3f65d0
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -62,7 +63,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec --no-startup-id kitty
 
 # kill focused window
 bindsym $mod+q kill
@@ -76,7 +77,7 @@ bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # Lock the screen using i3lock
-bindsym $mod+Shift+p exec --no-startup-id i3lock -i ~/Images/Wallpapers/purple_lock.png
+bindsym $mod+Shift+p exec --no-startup-id i3lock --blur 4
 
 # change focus
 bindsym $mod+h focus left

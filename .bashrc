@@ -11,7 +11,6 @@ PS1='$(tput bold)\e[36m\W > \e[37m$(tput sgr0)'
 # a separate file since they should not be source controlled
 source ~/.profile
 
-alias ls='ls --color=auto'
 alias r='ranger'
 
 # I can never remember the name for this program
@@ -28,7 +27,7 @@ alias rm='trash-put'
 
 alias vim='nvim'
 
-alias server='ssh -p 5980 server@192.168.0.104'
+alias server='ssh -p 5980 server@192.168.0.108'
 
 export EDITOR=nvim
 export PATH=~/.local/bin:"$PATH"
@@ -39,7 +38,8 @@ export PATH=~/.local/bin:"$PATH"
 eval "$(zoxide init bash)"
 
 neofetch
+#pridefetch -f trans -w 23
 
-alias sync="rsync -auzP -e 'ssh -p 5980' --exclude 'venv' ~/Courses/ server@192.168.0.104:~/rsync/courses/ && rsync -auzP -e 'ssh -p 5980' server@192.168.0.104:~/rsync/courses/ ~/Courses/"
+alias sync="rsync -auzP -e 'ssh -p 5980' --exclude 'venv' ~/Courses/ server@192.168.0.108:~/rsync/courses/ && rsync -auzP -e 'ssh -p 5980' server@192.168.0.108:~/rsync/courses/ ~/Courses/"
 
-alias ls='exa'
+alias ls='exa -l'
