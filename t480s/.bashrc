@@ -27,8 +27,6 @@ alias screenshot='scrot'
 alias pc='pwd | xclip -selection clipboard'
 
 # Alias for putting a file in the trash using trash-cli
-#alias rm='trash-put'
-
 alias vim='nvim'
 alias server='ssh -p 5980 server@dethcrvsh.com'
 alias ls='exa -l --icons'
