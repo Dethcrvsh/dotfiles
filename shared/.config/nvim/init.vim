@@ -20,6 +20,9 @@ call plug#begin()
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'airblade/vim-gitgutter'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'nvim-lualine/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+  Plug 'nvim-tree/nvim-web-devicons'
 call plug#end()
 
 " ================================================================
@@ -65,13 +68,59 @@ nnoremap <silent> <C-l> :call WinMove('l')<cr>
 " ================================================================
 
 nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
+" nnoremap <C-f> :NERDTreeFind<CR>
 
 " ================================================================
 " ===============|             COC                |===============
 " ================================================================
 
-let g:coc_global_extensions = ['coc-json', 'coc-git']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-sh', 'coc-java', 'coc-markdownlint', 'coc-pyright']
+
+" ================================================================
+" ===============|          LUALINE               |===============
+" ================================================================
+
+lua << END
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'pywal',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
+END
 
