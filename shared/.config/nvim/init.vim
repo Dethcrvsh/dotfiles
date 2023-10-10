@@ -73,3 +73,5 @@ nnoremap <C-f> :NERDTreeFind<CR>
 " ===============|             COC                |===============
 " ================================================================
 
+let g:coc_global_extensions = ['coc-json', 'coc-git']
+
