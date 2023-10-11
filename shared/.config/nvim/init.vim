@@ -23,6 +23,7 @@ call plug#begin()
   Plug 'nvim-lualine/lualine.nvim'
 " If you want to have icons in your statusline choose one of these
   Plug 'nvim-tree/nvim-web-devicons'
+  Plug 'karb94/neoscroll.nvim'
 call plug#end()
 
 " ================================================================
@@ -76,6 +77,13 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 " ================================================================
 
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-sh', 'coc-java', 'coc-markdownlint', 'coc-pyright']
+
+
+" ================================================================
+" ===============|          NEOSCROLL             |===============
+" ================================================================
+
+lua require('neoscroll').setup()
 
 " ================================================================
 " ===============|          LUALINE               |===============
