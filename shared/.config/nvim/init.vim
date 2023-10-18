@@ -89,7 +89,7 @@ inoremap <silent><expr> <Tab>
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 
-# Map enter to autocomplete
+" Map enter to autocomplete
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 " ================================================================
