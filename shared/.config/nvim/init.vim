@@ -64,6 +64,9 @@ nnoremap <silent> <C-j> :call WinMove('j')<cr>
 nnoremap <silent> <C-k> :call WinMove('k')<cr>
 nnoremap <silent> <C-l> :call WinMove('l')<cr>
 
+" Automatically set working dir to current buffer
+autocmd BufEnter * lcd %:p:h 
+
 " ================================================================
 " ===============|           NERDTREE             |===============
 " ================================================================
