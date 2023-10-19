@@ -68,6 +68,8 @@ bindsym $mod+Return exec --no-startup-id alacritty
 # kill focused window
 bindsym $mod+q kill
 
+bindsym $mod+p exec flameshot gui -p ~/Images/Screenshots
+
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
