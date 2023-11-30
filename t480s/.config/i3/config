@@ -18,6 +18,9 @@ exec --no-startup-id nitrogen --restore
 # Initialize the highlighted border around the windows
 exec_always --no-startup-id ~/.config/i3/xborder/xborders --border-radius 30 --border-width 3 --border-rgba C792EAFF
 
+# Initialize notification daemon
+exec --no-startup-id dunst
+
 #i3-gaps
 for_window [class="^.*"] border pixel 2
 gaps inner 30
