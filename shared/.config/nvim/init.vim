@@ -25,6 +25,7 @@ call plug#begin()
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'karb94/neoscroll.nvim'
   Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins', 'tag': '*' }
+  Plug 'bfrg/vim-cpp-modern'
 call plug#end()
 
 " ================================================================
