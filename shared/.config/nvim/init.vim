@@ -24,6 +24,7 @@ call plug#begin()
 " If you want to have icons in your statusline choose one of these
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'karb94/neoscroll.nvim'
+  Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 " ================================================================
