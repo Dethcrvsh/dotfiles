@@ -31,6 +31,7 @@ alias vim='nvim'
 alias server='ssh -p 5980 server@dethcrvsh.com'
 alias ls='exa -l --icons'
 alias rm='trash-put'
+alias ssh-liu='ssh -XY fabjo285@ssh.edu.liu.se'
 
 # Make sure files are synced before powering off
 alias poweroff='unison -batch sync && poweroff'

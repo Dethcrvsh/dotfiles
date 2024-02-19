@@ -33,7 +33,7 @@ family = "HackNerdFont"
 style = "Regular"
 
 [window]
-opacity = 0.9
+opacity = 0.98
 
 [window.padding]
 x = 10
