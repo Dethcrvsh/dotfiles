@@ -36,6 +36,7 @@ call plug#end()
 colorscheme wal
 set number
 set shiftwidth=4
+set tabstop=4
 
 " Used to make GitGutter more responsive
 set updatetime=100
