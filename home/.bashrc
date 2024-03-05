@@ -19,6 +19,7 @@ $(__git_ps1 " (%s)")
 
 export EDITOR=nvim
 export PATH=~/.local/bin:"$PATH"
+export PATH=~/.cargo/bin:"$PATH"
 
 alias r='ranger'
 alias screenshot='scrot'
