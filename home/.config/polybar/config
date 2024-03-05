@@ -50,12 +50,12 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = hack:pixelsize=10:weight=bold:antialias=true;1
-font-1 = Iosevka:pixelsize=14;1
+font-0 = Hack:pixelsize=10:weight=bold:antialias=true;1
+font-1 = HackNerdFont:pixelsize=14;1
 font-2 = Weather Icons:size=12;1
 
 modules-left = i3
-modules-center = spotify openweathermap polybar-liu-schedule
+modules-center = spotify openweathermap 
 modules-right = updates-pacman-aurhelper filesystem memory cpu eth speed date 
 
 tray-position = right
@@ -93,7 +93,7 @@ modules-left = i3
 
 [module/polybar-liu-schedule]
 type = custom/script
-exec = ~/Projects/polybar-liu-schedule/polybar-liu-schedule.sh
+exec = liusch
 interval = 900
 
 format-prefix = " "
@@ -120,7 +120,7 @@ label-font = 3
 [module/spotify]
 type = custom/script
 interval = 1
-format-prefix = "ﱘ "
+format-prefix = "󰝚 "
 format-prefix-foreground = ${colors.foreground-alt}
 format = <label>
 exec = python .config/polybar/scripts/polybar-spotify/spotify_status.py -f '{artist}: {song}'
@@ -159,7 +159,7 @@ mount-0 = /
 format-mounted-underline = ${colors.underline}
 
 ; I absolutely hate that variables cannot be evaluated inline
-label-mounted = %{F#89DDFF}%{F-} %used% / %total% 
+label-mounted = %{F#89DDFF}󰋊%{F-} %used% / %total% 
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -269,7 +269,7 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = "󰍛 "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.underline} 
 label = %percentage_used%%
@@ -302,7 +302,7 @@ interface = enp5s0
 interval = 3.0
 
 format-connected-underline = ${colors.underline}
-format-connected-prefix = " "
+format-connected-prefix = "  "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -316,9 +316,9 @@ format-disconnected =
 inherit = module/eth
 interval = 1.0
 
-format-connected-prefix = "ﰵ "
+format-connected-prefix = "󰜷 "
 width = 1000pt
-label-connected = %upspeed% %{F#89DDFF}ﰬ %{F-}%downspeed% 
+label-connected = %upspeed:9% %{F#89DDFF}󰜮 %{F-}%downspeed:9% 
 
 [module/date]
 type = internal/date

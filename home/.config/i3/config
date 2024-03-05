@@ -16,7 +16,7 @@ exec_always --no-startup-id picom
 exec --no-startup-id nitrogen --restore
 
 # Initialize the highlighted border around the windows
-exec_always --no-startup-id /usr/bin/xborder/xborders -c ~/.config/i3/xborders_config.json
+exec_always --no-startup-id /usr/bin/xborder/xborders --border-radius 30 --border-width 3 --border-red 199 --border-green 146 --border-blue 234
 
 #i3-gaps
 for_window [class="^.*"] border pixel 2
@@ -80,7 +80,8 @@ bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # Lock the screen using i3lock
-bindsym $mod+Shift+p exec --no-startup-id i3lock --blur 4
+
+bindsym $mod+Shift+p exec --no-startup-id i3lock -c 00000080 -k --time-font=Hack --timeoutline-color=c792eaff --timeoutline-width=2 --time-size=100 --time-color=263238e0 --date-size=30 --date-color=c792eaff --date-pos=960:600 --radius=250 --ring-color=c792eaff
 
 # change focus
 bindsym $mod+h focus left
