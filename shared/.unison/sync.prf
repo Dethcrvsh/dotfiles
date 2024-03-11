@@ -1,0 +1,6 @@
+root=/home/dethcrvsh/
+root=ssh://server@dethcrvsh.com//home/server/unison/
+
+sshargs=-p 5980
+
+path=Courses
