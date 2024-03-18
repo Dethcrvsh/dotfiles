@@ -10,13 +10,15 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Start the compositor
-exec_always --no-startup-id picom
+exec --no-startup-id picom
 
 # Initialize the wallpaper
 exec --no-startup-id nitrogen --restore
 
 # Initialize the highlighted border around the windows
 exec_always --no-startup-id /usr/bin/xborder/xborders --border-radius 30 --border-width 3 --border-red 199 --border-green 146 --border-blue 234
+
+exec --no-startup-id redshift -l 58.4:15.6
 
 #i3-gaps
 for_window [class="^.*"] border pixel 2
