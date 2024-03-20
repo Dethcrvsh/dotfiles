@@ -19,6 +19,10 @@ lvim.plugins = {
     }
 }
 
+lvim.builtin.which_key.mappings['st'] = {
+    "<cmd> TodoTelescope <cr>", "Find Todo's"
+}
+
 lvim.colorscheme = "oxocarbon"
 vim.opt.relativenumber = true
 vim.opt.shiftwidth = 4
